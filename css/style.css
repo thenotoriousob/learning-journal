@@ -1,0 +1,340 @@
+:root {
+    --black-color: #000000;
+    --white-color: #FFFFFF;
+    --article-header-color: #141414;
+    --article-text-color: #505050;
+    --footer-background-color: #202020;
+    --footer-header-color: #ECECEC;
+    --footer-text-color: #D7D7D7;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Source Sans 3", sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+p {
+    line-height: 1.35;
+}
+
+/* Typography styles - Start */
+.main-article-title {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.article-title {
+    font-size: 1.5rem;
+}
+
+.main-page-title,
+.view-more-btn,
+.recent-posts,
+.article-content-header {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.article-date {
+    font-size: 0.875;
+}
+
+.main-nav-container,
+.article-date,
+.copyright-text,
+.footer-header {
+    font-size: 0.75rem;
+}
+
+.main-nav-container,
+.footer-header {
+    font-weight: 600;
+}
+
+/* Typography styles - End */
+
+/* Header styles - Start */
+header {
+    /* Stop collapsing margin */
+    padding-bottom: 1px;
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+    margin: 1.25em auto;
+}
+
+.fa-laptop {
+    margin-right: 0.5em;
+}
+
+.main-nav-list {
+    list-style-type: none;
+    text-transform: uppercase;
+}
+
+.main-nav-list {
+    display: flex;
+    gap: 2em;
+}
+
+.nav-links {
+    text-decoration: none;
+    color: var(--black-color);
+}
+
+/* Header styles - End */
+
+/* Main page hero styles - Start */
+.main-page-hero {
+    background-image: url("../images/hero.png");
+    background-size: cover;
+    min-height: 300px;
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+.main-page-hero .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 300px;
+    padding-bottom: 1.5em;
+    gap: 0.5em;
+    pointer-events: none;
+}
+
+.main-page-hero .article-date {
+    color: var(--white-color);
+}
+
+.main-article-text {
+    max-width: 615px;
+}
+
+.hero-img {
+    width: 100%;
+    max-width: 980px;
+    max-height: 490px;
+    margin-bottom: 1em;
+}
+
+/* Main page hero styles - End */
+
+/* Blog styling - Start */
+
+.article {
+    display: flex;
+    flex-direction: column;
+    /* display: grid;
+    grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr; */
+    gap: 0.5em;
+}
+
+.article-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1em;
+    padding: 2em 0;
+}
+
+.article-date {
+    color: var(--black-color);
+}
+
+.article-title {
+    color: var(--article-header-color);
+}
+
+.article-text {
+    color: var(--article-text-color);
+}
+
+.recent-posts {
+    text-align: center;
+}
+
+.view-more-container {
+    margin-bottom: 1em;
+    text-align: center;
+    margin-bottom: 2.5em;
+}
+
+.view-more-btn {
+    background-color: transparent;
+    color: var(--black-color);
+    border: 0;
+    border-bottom: 2px solid var(--black-color);
+}
+
+/* Blog styles - End */
+
+/* Footer styles - Start */
+
+.main-page-footer {
+    background-color: var(--footer-background-color);
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+}
+
+.footer-header {
+    color: var(--footer-header-color);
+}
+
+.copyright-text {
+    color: var(--footer-text-color);
+}
+
+/* Selected article styles - Start */
+
+.main-article-header-container,
+.main-article-content-container {
+    max-width: 850px;
+    margin: 2em auto;
+    display: grid;
+    gap: 1em;
+}
+
+.selected-article {
+    margin: 2em auto 3em;
+    text-align: center;
+}
+
+.selected-article .article-date {
+    margin-bottom: 1.25em;
+}
+
+.selected-article .article-title {
+    margin-bottom: 0.5em;
+}
+
+.selected-article .article-summary {
+    margin-bottom: 2em;
+}
+
+.article-content-header,
+.article-content-text {
+    margin-bottom: 1em;
+}
+
+/* Projects for modules styles - Start */
+
+.course-content-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 2em auto;
+}
+
+.course-content-container li {
+    margin-left: 20px;
+    padding-right: 1em;
+    list-style-type: circle;
+}
+
+.projects-container {
+    display: grid;
+    /* Don't want a bit gap between projects when only a couple so max width is 150px */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 175px));
+    justify-content: center;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+.project {
+    margin: 1em;
+    text-align: center;
+}
+
+.project-links {
+    text-decoration: none;
+    color: var(--black-color)
+}
+
+.project-title {
+    margin-bottom: 1em;
+    font-weight: 700;
+}
+
+/* Projects for modules styles - Start */
+
+/* About me styles - Start */
+.about-me-container {
+    margin: 2em auto;
+}
+
+.about-me-avatar {
+    width: 182px;
+    height: 182px;
+    border-radius: 50%;
+    margin-bottom: 1.5em;
+}
+
+.about-me-title {
+    margin-bottom: 1em;
+}
+
+.about-me-content {
+    margin-bottom: 1em;
+}
+
+/* About me styles - End */
+
+
+/* Breakout grid */
+
+.content-grid {
+  --padding-inline: 1rem;
+  --content-max-width: 900px;
+  --breakout-max-width: 1200px;
+
+  --breakout-size: calc(
+    (var(--breakout-max-width) - var(--content-max-width)) / 2
+  );
+
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(var(--padding-inline), 1fr)
+    [breakout-start] minmax(0, var(--breakout-size))
+    [content-start] min(
+      100% - (var(--padding-inline) * 2),
+      var(--content-max-width)
+    )
+    [content-end]
+    minmax(0, var(--breakout-size)) [breakout-end]
+    minmax(var(--padding-inline), 1fr) [full-width-end];
+}
+
+.content-grid > :not(.breakout, .full-width),
+.full-width > :not(.breakout, .full-width) {
+    grid-column: content;
+}
+
+.content-grid > .breakout {
+    grid-column: breakout;
+}
+
+.content-grid > .full-width {
+    grid-column: full-width;
+
+    display: grid;
+    grid-template-columns: inherit;
+}
