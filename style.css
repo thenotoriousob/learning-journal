@@ -163,6 +163,7 @@ take up the same space vertically even if they have different content */
 
 .recent-posts {
     text-align: center;
+    display: none;
 }
 
 .view-more-container {

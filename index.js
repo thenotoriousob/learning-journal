@@ -14,7 +14,7 @@ document.addEventListener("click", (e) => {
         /* When the view more articles link is pressed, show 3 more */
         noOfArticles += 3;
 
-        renderBlogs();
+        renderArticles();
     }
     else if (e.target.id === "home") {
         renderHomePage();
@@ -33,30 +33,15 @@ document.addEventListener("click", (e) => {
 
 const renderMainArticle = () => {
 
-    mainContentEl.innerHTML = `
-        <div class="container">
-            <section>
-                <div class="main-article-header-container">
-                    <p class="article-date">JULY, 2024</p>
-                    <h2 class="article-title">My new journey as a bootcamp student</h2>
-                    <p class="article-summary">I started the bootcamp end of June 2024 and I wanted to track what I have learned.</p>
-                </div>
-                <img class="main-article-img" src="./images/hero.png" alt="">
-                <div class="main-article-content-container">
-                    <div class="article-content">
-                        <h2 class="article-content-header">How I stay committed to learning</h2>
-                        <p class="article-content-text">I try and do something at the same time each day so that it becomes routine. </p>
-                        <p class="article-content-text">The key difference with Scrimba is that you are writing code from day 1 so you are always getting to put into practice what you are learning. That definitely helps when you are doing a long course, as it would get very boring just watching videos.</p>
-                        <h2 class="article-content-header">What are the key benefits of the bootcamp</h2>
-                        <p class="article-content-text">For me the main benefits of the bootcamp so far have been the additional solo projects. I think I have built more than 15 already so I am constantly getting to use the skills I have been learning.</p>
-                        <p class="article-content-text">And on the back of that getting all of these code reviewed by a mentor. Each one of these gives you tips for taking into your next project so you are constantly improving. Its also good to know that you are on the correct path with things, and any bad habits are picked up straight away</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-    `;
+    const templateEl = document.getElementById("main-article-template");
 
-    renderBlogs(true);
+    let clonedTemplate = templateEl.content.cloneNode(true);
+
+    mainContentEl.innerHTML = "";
+
+    mainContentEl.appendChild(clonedTemplate);
+
+    renderArticles(true);
 
     scroll(0,0);
 
@@ -128,7 +113,7 @@ const renderSelectedArticle = (articleId) => {
 
     mainContentEl.innerHTML = html;
 
-    renderBlogs(true);
+    renderArticles(true);
 
     scroll(0,0);
 
@@ -136,80 +121,73 @@ const renderSelectedArticle = (articleId) => {
 
 const renderAboutMeSection = () => {
 
-    mainContentEl.innerHTML = `
-        <section class="about-me-container">
-            <div class="container">
-                <img class="about-me-avatar" src="./images/mark.jpg" alt="">
-                <h2 class="about-me-title">Hey! My name is Mark and welcome to my learning journal.</h2>
-                <p class="about-me-content">After years of being a Backend Developer, I've decided to start the Bootcamp to learn Frontend and hopefully start working on both sides. I love learning new things</p>
+    const templateEl = document.getElementById("about-me-template");
 
-                <p class="about-me-content">I love travelling and I guess that ties in with the learning journal as part of that I like learning about new cultures. My avatar is a picture of me in Bolivar Square in Bogotá. The best £2 I ever spent! My favourite city is New York (I have been many times but running the marathon was my best experience!), but I have recently been to Buenos Aires and that runs it close. I am going again this year so maybe it will overtake it, haha.</p>
+    let clonedTemplate = templateEl.content.cloneNode(true);
 
-                <p class="about-me-content">Before starting the bootcamp I had been learning Spanish for 4 years. I had burned myself out with that a bit so the Bootcamp is filling the void for a few months whilst I rediscover my motivation :) It needs to be quick as I am going to Argentina in a few months!</p>
-            </div>
-        </div>
-    `;
+    mainContentEl.innerHTML = "";
 
-    renderBlogs(true);
+    mainContentEl.appendChild(clonedTemplate);
+
+    renderArticles(true);
 
     scroll(0,0);
 
 }
 
-const renderBlogs = (displayRecentPostText) => {
+const renderArticles = (displayRecentPostText) => {
 
-    let html = `${displayRecentPostText ? '<h2 class="recent-posts">Recent posts</h2>' : ''}
-                <section class="article-container" id="article-list">`;
+    const articlesContentEl = document.getElementById("articles")
+    const templateEl = document.getElementById("article-template");
 
+    /* Load in outer template so we can access the inner template */
+    let clonedTemplate = templateEl.content.cloneNode(true);
+
+    const innerTemplateEl = clonedTemplate.getElementById("article-content-template");
+    const articleListEl = clonedTemplate.getElementById('article-list');
+
+    articlesContentEl.innerHTML = "";
+
+    /* For each of the articles create an inner template and append it to the
+    article list of the outer template */
     blogData.forEach((blog, index) => {
 
         if (index < noOfArticles) {
+
             const { title, image, published, summary, alttext } = blog;
 
-            html += `
-                    <article class="article" data-article-id="${index}">
-                        <img class="article-img" src="${image}" alt="${alttext}">
-                        <p class="article-date">${published}</p>
-                        <h2 class="article-title">${title}</h2>
-                        <p class="article-summary">${summary}</p>
-                    </article>
-            `;
+            let clonedInnerTemplate = innerTemplateEl.content.cloneNode(true);
+
+            clonedInnerTemplate.querySelector('.article').dataset.articleId = index;
+            clonedInnerTemplate.querySelector('.article-img').src = image;
+            clonedInnerTemplate.querySelector('.article-date').textContent = published;
+            clonedInnerTemplate.querySelector('.article-title').textContent = title;
+            clonedInnerTemplate.querySelector('.article-summary').textContent = summary;
+
+            articleListEl.append(clonedInnerTemplate);
+
         };
+
     });
 
-    html += `
-            </section>
-            <div class="view-more-container">
-                <button type="button" class="view-more-btn">View more</button>
-            </div>
-    `;
+    clonedTemplate.querySelector(".recent-posts").style.display = displayRecentPostText ? "block" : "none";
 
-    blogsEl.innerHTML = html;
+    articlesContentEl.appendChild(clonedTemplate);
 
-    const viewMoreBlogsEl = document.querySelector(".view-more-btn");
-
-    // If there are no more article to display then there is no point displaying the link
-    if (noOfArticles >= blogData.length) {
-        viewMoreBlogsEl.style.display = "none";
-    } else {
-        viewMoreBlogsEl.style.display = "inline";
-    }
 };
 
 const renderHomePage = () => {
-    
-    mainContentEl.innerHTML = `
-        <section class="main-page-hero" id="main-article">
-            <div class="container">
-                <p class="article-date">JULY 23, 2024</p>
-                <h2 class="main-article-title">My new journey as a bootcamp student.</h2>
-                <p class="main-article-summary">After several months of learning in the Frontend Developer Career Path, I've made the big jump over to the Bootcamp to get expert code reviews of my Solo Projects projects and meet like-minded peers.</p>
-            </div>
-        </section>
-    `;
 
-    renderBlogs(false);
-}
+    const templateEl = document.getElementById("home-page-template");
+
+    let clonedTemplate = templateEl.content.cloneNode(true);
+
+    mainContentEl.innerHTML = "";
+
+    mainContentEl.appendChild(clonedTemplate);
+
+    renderArticles(false);
+};
 
 renderHomePage();
 
