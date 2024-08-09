@@ -1,10 +1,12 @@
 import { blogData } from "./blog-data.js";
 
 const mainContentEl = document.getElementById("main-content");
-const blogsEl = document.getElementById("blogs");
+const navListEl = document.querySelector(".main-nav-list");
 
 // For smaller screens just open with 3 additional blogs, otherwise 6
 let noOfArticles = window.innerWidth > 500 ? 6 : 3;
+// The recent posts text shouldn't display on the home page, but display on all other pages
+let displayRecentPostText = false;
 
 document.addEventListener("click", (e) => {
 
@@ -28,12 +30,47 @@ document.addEventListener("click", (e) => {
     else if (e.target.dataset.articleId) {
         renderSelectedArticle(e.target.dataset.articleId);
     }
+    else if (e.target.id === "hamburger-menu") {
+        showMenu();
+    };
 
 });
 
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 499) {
+        navListEl.style.display = "flex";
+    } else {
+        navListEl.style.display = "none";
+    };
+});
+
+const renderHomePage = () => {
+
+    displayRecentPostText = false;
+
+    appendToMainElement("home-page-template");
+
+};
+
 const renderMainArticle = () => {
 
-    const templateEl = document.getElementById("main-article-template");
+    displayRecentPostText = true;
+
+    appendToMainElement("main-article-template");
+
+};
+
+const renderAboutMeSection = () => {
+
+    displayRecentPostText = true;
+
+    appendToMainElement("about-me-template");
+
+};
+
+const appendToMainElement = templateId => {
+
+    const templateEl = document.getElementById(templateId);
 
     let clonedTemplate = templateEl.content.cloneNode(true);
 
@@ -41,7 +78,7 @@ const renderMainArticle = () => {
 
     mainContentEl.appendChild(clonedTemplate);
 
-    renderArticles(true);
+    renderArticles();
 
     scroll(0,0);
 
@@ -49,93 +86,68 @@ const renderMainArticle = () => {
 
 const renderSelectedArticle = (articleId) => {
 
-    let html = "";
+    const templateEl = document.getElementById("selected-article-template");
 
-    html = `
-          <section class="selected-article" id="selected-article">
-              <div class="container">
-    `;
-
-    /* Only do this if the module has course content, otherwise display message to come back later */
-    if (blogData[articleId].coursecontent) {
-
-        html += `
-                <h2 class="topics-title">Topics Covered and Solo Projects</h2>
-                <ul class="course-content-container">
-
-                `;
-        /* Build a list of each of the things taught on the module */
-        blogData[articleId].coursecontent.forEach(content => {
-            html += `
-                    <li>${content}</li>
-                    `
-        })
-
-        html += `
-                </ul>
-                `;
-
-        /* Only do this if the module has solo projects */
-        if (blogData[articleId].projects) {
-
-            html += `
-                    <div class="projects-container">
-                    `;
-
-            blogData[articleId].projects.forEach((blog, index) => {
-
-                const { name, url, img } = blog;
-
-                html += `
-                        <div class="project">
-                            <a class="project-links" href="${url}">
-                                <p class="project-title">${name}</p>
-                                <img class="project-img" src="${img}" alt="">
-                            </a>
-                        </div>
-                `;
-
-            });
-
-            html += `
-                    </div>`
-
-        };
-
-    } else {
-        html += `<h2 class="topics-title">Please come back when I have completed these modules</h2>`;
-    };
-
-    html += `
-                </div>
-            </section>
-            `;
-
-    mainContentEl.innerHTML = html;
-
-    renderArticles(true);
-
-    scroll(0,0);
-
-}
-
-const renderAboutMeSection = () => {
-
-    const templateEl = document.getElementById("about-me-template");
-
+    /* Load in outer template so we can access the inner template */
     let clonedTemplate = templateEl.content.cloneNode(true);
 
     mainContentEl.innerHTML = "";
 
+    if (blogData[articleId].coursecontent) {
+
+        const innerTemplateEl = clonedTemplate.getElementById("course-content-template");
+
+        clonedTemplate.querySelector('.topics-title').textContent = "Topics Covered and Solo Projects";
+
+        let clonedInnerTemplate = innerTemplateEl.content.cloneNode(true);
+
+        const listEl = clonedInnerTemplate.querySelector(".course-content-list");
+
+        blogData[articleId].coursecontent.forEach(content => {
+
+            const li = document.createElement("li");
+            li.textContent = content;
+            listEl.appendChild(li);
+
+        });
+
+        clonedTemplate.querySelector(".container").insertBefore(clonedInnerTemplate,clonedTemplate.querySelector(".projects-container"));
+
+        /* Only do this if the module has solo projects */
+        if (blogData[articleId].projects) {
+
+            blogData[articleId].projects.forEach((blog) => {
+
+                const { name, url, img } = blog;
+                const innerTemplateEl = clonedTemplate.getElementById("projects-template");
+
+                let clonedInnerTemplate = innerTemplateEl.content.cloneNode(true);
+
+                clonedInnerTemplate.querySelector(".project-links").href = url;
+                clonedInnerTemplate.querySelector(".project-title").textContent = name;
+                clonedInnerTemplate.querySelector(".project-img").src = img;
+
+                clonedTemplate.querySelector(".projects-container").appendChild(clonedInnerTemplate)
+
+            });
+
+        };
+
+    } else {
+        clonedTemplate.querySelector('.topics-title').textContent = "Please come back when I have completed these modules";
+    };
+
     mainContentEl.appendChild(clonedTemplate);
 
-    renderArticles(true);
+    displayRecentPostText = true;
+
+    renderArticles();
 
     scroll(0,0);
 
-}
+};
 
-const renderArticles = (displayRecentPostText) => {
+const renderArticles = () => {
 
     const articlesContentEl = document.getElementById("articles")
     const templateEl = document.getElementById("article-template");
@@ -160,6 +172,7 @@ const renderArticles = (displayRecentPostText) => {
 
             clonedInnerTemplate.querySelector('.article').dataset.articleId = index;
             clonedInnerTemplate.querySelector('.article-img').src = image;
+            clonedInnerTemplate.querySelector('.article-img').alt = alttext;
             clonedInnerTemplate.querySelector('.article-date').textContent = published;
             clonedInnerTemplate.querySelector('.article-title').textContent = title;
             clonedInnerTemplate.querySelector('.article-summary').textContent = summary;
@@ -176,17 +189,13 @@ const renderArticles = (displayRecentPostText) => {
 
 };
 
-const renderHomePage = () => {
+function showMenu() {
 
-    const templateEl = document.getElementById("home-page-template");
-
-    let clonedTemplate = templateEl.content.cloneNode(true);
-
-    mainContentEl.innerHTML = "";
-
-    mainContentEl.appendChild(clonedTemplate);
-
-    renderArticles(false);
+    if (navListEl.style.display === "block") {
+        navListEl.style.display = "none";
+    } else {
+        navListEl.style.display = "block";
+    };
 };
 
 renderHomePage();

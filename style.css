@@ -21,6 +21,7 @@ body {
 .container {
     width: 90%;
     max-width: 980px;
+    min-width: 250px;
     margin: 0 auto;
 }
 
@@ -71,9 +72,10 @@ header {
 
 /* Only want to turn it into a flex container in the header */
 header .container {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     margin: 1.25em auto;
+    position: relative;
 }
 /* Give the laptop icon some space from the header title */
 .fa-laptop {
@@ -81,15 +83,32 @@ header .container {
 }
 
 .main-nav-list {
-    display: flex;
-    gap: 2em;
+    display: none;
+    /* display: flex; */
+    /* gap: 2em; */
     list-style-type: none;
     text-transform: uppercase;
 }
 
 .nav-links {
+    text-align: right;
     text-decoration: none;
     color: var(--black-color);
+    display: block;
+    margin-top: 0.75em;
+}
+
+
+.main-nav-container a.icon {
+    color: black;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 4px;
+}
+
+.fa-bars {
+    pointer-events: none;
 }
 
 /* Header styles - End */
@@ -244,7 +263,7 @@ take up the same space vertically even if they have different content */
 
 /* Modules styles - Start */
 
-.course-content-container {
+.course-content-list {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -252,7 +271,7 @@ take up the same space vertically even if they have different content */
     margin: 2em auto;
 }
 
-.course-content-container li {
+.course-content-list li {
     margin-left: 20px;
     padding-right: 1em;
     list-style-type: circle;
@@ -305,4 +324,28 @@ take up the same space vertically even if they have different content */
 }
 
 /* About me styles - End */
+
+@media (min-width: 500px) {
+
+    .fa-bars {
+        display: none;
+        color: red;
+    }
+
+    .main-nav-list {
+        display: flex;
+        gap: 2em;
+    }
+
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-links {
+        margin-top: 0;
+    }
+
+}
 

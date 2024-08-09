@@ -12,17 +12,21 @@
     <body>
         <header>
             <div class="container">
-                <h1 class="main-page-title"><i class="fa-solid fa-laptop"></i>My learning journal</h1>
+                <h1 class="main-page-title"><nobr><i class="fa-solid fa-laptop"></i>My learning journal</nobr></h1>
                 <nav class="main-nav-container">
                     <ul class="main-nav-list">
                         <li><a class="nav-links" href="#" id="home">Home</a></li>
                         <li><a class="nav-links" href="#" id="about-me">About me</a></li>
                     </ul>
+                    <a href="javascript:void(0);" class="icon" id="hamburger-menu">
+                        <i class="fa fa-bars"></i>
+                    </a>
                 </nav>
+                
             </div>
         </header>
         <main>
-            <!-- Templates -->
+            <!-- Templates Start -->
             <template id="home-page-template">
                 <section class="main-page-hero" id="main-article">
                     <div class="container">
@@ -83,6 +87,30 @@
                       </div>
                   </section>
             </template>
+            <template id="selected-article-template">
+                <section class="selected-article" id="selected-article">
+                    <div class="container">
+                        <h2 class="topics-title"></h2>
+                        <template id="course-content-template">
+                            <ul class="course-content-list">
+
+                            </ul>
+                        </template>
+                        <div class="projects-container"></div>
+                            <template id="projects-template">
+                                <div class="project">
+                                    <a class="project-links" href="">
+                                        <p class="project-title"></p>
+                                        <img class="project-img" src="" alt="Thumbnail of project">
+                                    </a>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </section>
+            </template>
+            <!-- Templates End -->
+
             <div id="main-content">
             </div>
 
