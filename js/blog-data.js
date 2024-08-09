@@ -2,6 +2,7 @@ export const blogData = [
     {
         title: "Web dev basics",
         image: "./images/post-img-01.jpg",
+        alttext: "Purple light",
         published: "JULY, 2024",
         summary: "Learn basic css",
         coursecontent: ["Semantic html basics","Inline","margin", "padding", "border", "centering",
@@ -25,6 +26,7 @@ export const blogData = [
     {
         title: "Interactive websites",
         image: "./images/post-img-02.jpg",
+        alttext: "Someone holding a lightbulb by the bottom in their hand",
         published: "JULY, 2024",
         summary: "Learn basic javascript",
         coursecontent: ["arrays","objects","booleans","if else statements","comparison operators","logical operators",
@@ -64,6 +66,7 @@ export const blogData = [
     {
         title: "Accessible development",
         image: "./images/post-img-03.jpg",
+        alttext: "Laptop with vs code open",
         published: "JULY, 2024",
         summary: "Learn how to make your websites accessible to all",
         coursecontent: ["Text contrast","Alt text for images","Accessible links","Accessible form fields",
@@ -71,7 +74,8 @@ export const blogData = [
     },
     {
         title: "Essential CSS concepts",
-        image: "./images/post-img-03.jpg",
+        image: "./images/post-img-04.jpg",
+        alttext: "A woman walking on the beach on a sunny day",
         published: "JULY, 2024",
         summary: "Take your css skills up a level from the first module",
         coursecontent: ["margin auto on flex children","position absolute and relative","flex align-self",
@@ -91,7 +95,8 @@ export const blogData = [
     },
     {
         title: "Essential javascript",
-        image: "./images/post-img-04.jpg",
+        image: "./images/post-img-05.jpg",
+        alttext: "A computer screen showing the home page of a React app",
         published: "JULY, 2024",
         summary: "Take your javascript skills up a level from the first module",
         coursecontent: ["setTimeout","element.style","forms","formData & get()","event.preventDefault",
@@ -126,7 +131,8 @@ export const blogData = [
     },
     {
         title: "Responsive design",
-        image: "./images/post-img-05.jpg",
+        image: "./images/post-img-06.jpg",
+        alttext: "A laptop showing the phrase 'I design and develop experiences that make people's lives simple'",
         published: "AUGUST, 2024",
         summary: "Learn how to make your page fully responsive",
         coursecontent: ["Think 'responsively'","Percentage, em and rem","Media queries and mobile first",
@@ -137,37 +143,43 @@ export const blogData = [
     },
     {
         title: "Code reviews",
-        image: "./images/post-img-06.jpg",
+        image: "./images/post-img-07.jpg",
+        alttext: "Text that says this module still has to be done",
         published: "AUGUST, 2024",
         summary: "Learn git essentials and the importance of code reviews"
     },
     {
         title: "Working with APIS",
-        image: "./images/post-img-06.jpg",
+        image: "./images/post-img-07.jpg",
+        alttext: "Text that says this module still has to be done",
         published: "TBC",
         summary: "Learn the essential skill of interacting with apis"
     },
     {
         title: "User interactive design",
-        image: "./images/post-img-06.jpg",
+        image: "./images/post-img-07.jpg",
+        alttext: "Text that says this module still has to be done",
         published: "TBC",
         summary: "Learn the importance of good UI design"
     },
     {
         title: "React basics",
-        image: "./images/post-img-06.jpg",
+        image: "./images/post-img-07.jpg",
+        alttext: "Text that says this module still has to be done",
         published: "TBC",
         summary: "The start of the good stuff"
     },
     {
         title: "Advanced react",
-        image: "./images/post-img-06.jpg",
+        image: "./images/post-img-07.jpg",
+        alttext: "Text that says this module still has to be done",
         published: "TBC",
         summary: "Advanced good stuff :)"
     },
     {
         title: "Getting hired",
-        image: "./images/post-img-06.jpg",
+        image: "./images/post-img-07.jpg",
+        alttext: "Text that says this module still has to be done",
         published: "TBC",
         summary: "Woohoo! Give me a job!!"
     }
