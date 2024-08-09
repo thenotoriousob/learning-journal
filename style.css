@@ -72,8 +72,6 @@ header {
 
 /* Only want to turn it into a flex container in the header */
 header .container {
-    /* display: flex;
-    justify-content: space-between; */
     margin: 1.25em auto;
     position: relative;
 }
@@ -84,8 +82,6 @@ header .container {
 
 .main-nav-list {
     display: none;
-    /* display: flex; */
-    /* gap: 2em; */
     list-style-type: none;
     text-transform: uppercase;
 }
@@ -94,21 +90,18 @@ header .container {
     text-align: right;
     text-decoration: none;
     color: var(--black-color);
+    /* Take up the full width and allow us to apply margin */
     display: block;
     margin-top: 0.75em;
 }
 
-
+/* Position the hamburger icon */
 .main-nav-container a.icon {
-    color: black;
+    color: var(--black-color);
     display: block;
     position: absolute;
     right: 0;
     top: 4px;
-}
-
-.fa-bars {
-    pointer-events: none;
 }
 
 /* Header styles - End */
@@ -149,7 +142,9 @@ on larger screens */
 take up the same space vertically even if they have different content */
 .article-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    /* Didn't want to have a fixed width when on a smaller screen as it overflows
+      the container eventually. So set as 1fr, then bring in the minmax on larger screens */
+    grid-template-columns: 1fr;
     gap: 1em;
     padding: 2em 0;
 }
@@ -161,16 +156,23 @@ take up the same space vertically even if they have different content */
     cursor: pointer;
 }
 
+/* So they don't interfere with the click of the parents */
 .article-date,
 .article-img,
 .article-title,
-.article-summary {
+.article-summary,
+.fa-bars {
     pointer-events: none;
 }
 
 .article-date {
     color: var(--black-color);
 }
+
+.article-img {
+    width: 100%;
+    /* max-width: 300px; */
+} 
 
 .article-title {
     color: var(--article-header-color);
@@ -325,27 +327,36 @@ take up the same space vertically even if they have different content */
 
 /* About me styles - End */
 
+/* Some style changes for larger screens */
 @media (min-width: 500px) {
 
+    /* Hide the hamburger icon */
     .fa-bars {
         display: none;
-        color: red;
     }
 
+    /* Change the nav list to a flex container to they sit side by side */
     .main-nav-list {
         display: flex;
         gap: 2em;
     }
 
+    /* Change to flex container so we can position the heading and menu
+      at either end of the container */
     header .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
 
+    /* No longer any need for margin top, this is only when displayed vertically */
     .nav-links {
         margin-top: 0;
     }
 
-}
+    /* Only need one column up to this width, then after repeat the images */
+    .article-container {
+        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr))
+    }
 
+}

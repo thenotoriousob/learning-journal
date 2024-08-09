@@ -37,6 +37,7 @@ document.addEventListener("click", (e) => {
 });
 
 window.addEventListener("resize", () => {
+    /* When the window resizes need to determine which menu style to display */
     if (window.innerWidth > 499) {
         navListEl.style.display = "flex";
     } else {
@@ -190,7 +191,6 @@ const renderArticles = () => {
 };
 
 function showMenu() {
-
     if (navListEl.style.display === "block") {
         navListEl.style.display = "none";
     } else {
