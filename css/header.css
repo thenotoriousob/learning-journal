@@ -1,0 +1,39 @@
+header {
+    font-family: "Roboto", sans-serif;
+    /* Stop collapsing margin */
+    padding-bottom: 1px;
+}
+
+/* Only want to turn it into a flex container in the header */
+header .container {
+    margin: 1.25em auto;
+    position: relative;
+}
+/* Give the laptop icon some space from the header title */
+.fa-laptop {
+    margin-right: 0.5em;
+}
+
+.main-nav-list {
+    display: none;
+    list-style-type: none;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    text-align: right;
+    text-decoration: none;
+    color: var(--black-color);
+    /* Take up the full width and allow us to apply margin */
+    display: block;
+    margin-top: 0.75em;
+}
+
+/* Position the hamburger icon */
+.main-nav-container a.icon {
+    color: var(--black-color);
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 4px;
+}

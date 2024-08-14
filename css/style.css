@@ -1,3 +1,9 @@
+@import "header.css";
+@import "main-article.css";
+@import "about-me.css";
+@import "articles.css";
+@import "projects.css";
+
 :root {
     --black-color: #000000;
     --white-color: #FFFFFF;
@@ -27,6 +33,15 @@ body {
 
 p {
     line-height: 1.35;
+}
+
+/* So they don't interfere with the click of the parents */
+.article-date,
+.article-img,
+.article-title,
+.article-summary,
+.fa-bars {
+    pointer-events: none;
 }
 
 /* Typography styles - Start */
@@ -63,146 +78,6 @@ p {
 
 /* Typography styles - End */
 
-/* Header styles - Start */
-header {
-    font-family: "Roboto", sans-serif;
-    /* Stop collapsing margin */
-    padding-bottom: 1px;
-}
-
-/* Only want to turn it into a flex container in the header */
-header .container {
-    margin: 1.25em auto;
-    position: relative;
-}
-/* Give the laptop icon some space from the header title */
-.fa-laptop {
-    margin-right: 0.5em;
-}
-
-.main-nav-list {
-    display: none;
-    list-style-type: none;
-    text-transform: uppercase;
-}
-
-.nav-links {
-    text-align: right;
-    text-decoration: none;
-    color: var(--black-color);
-    /* Take up the full width and allow us to apply margin */
-    display: block;
-    margin-top: 0.75em;
-}
-
-/* Position the hamburger icon */
-.main-nav-container a.icon {
-    color: var(--black-color);
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 4px;
-}
-
-/* Header styles - End */
-
-/* Main page main article styles - Start */
-.main-page-hero {
-    background-image: url("../images/hero.png");
-    background-size: cover;
-    cursor: pointer;
-}
-
-/* The .article-date class changes the font to black for the rest
-of the dates on the page */
-.main-page-hero,
-.main-page-hero .article-date {
-  color: var(--white-color);
-}
-/* Make it a flex container so we can position the text at the bottom */
-.main-page-hero .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    min-height: 300px;
-    gap: 0.5em;
-    padding-bottom: 1.5em;
-    pointer-events: none;
-}
-/* Limit how long the summary gets on one line to make it more readable
-on larger screens */
-.main-article-summary {
-    max-width: 615px;
-}
-
-/* Main page main article styles - End */
-
-/* Additional posts styling - Start */
-/* Make the container a grid to make the cards responsive, each row will
-take up the same space vertically even if they have different content */
-.article-container {
-    display: grid;
-    /* Didn't want to have a fixed width when on a smaller screen as it overflows
-      the container eventually. So set as 1fr, then bring in the minmax on larger screens */
-    grid-template-columns: 1fr;
-    gap: 1em;
-    padding: 2em 0;
-}
-/* Make the article card a flex container to easily space out the content */
-.article {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    cursor: pointer;
-}
-
-/* So they don't interfere with the click of the parents */
-.article-date,
-.article-img,
-.article-title,
-.article-summary,
-.fa-bars {
-    pointer-events: none;
-}
-
-.article-date {
-    color: var(--black-color);
-}
-
-.article-img {
-    width: 100%;
-    /* max-width: 300px; */
-} 
-
-.article-title {
-    color: var(--article-header-color);
-}
-
-.article-text {
-    color: var(--article-text-color);
-}
-
-.recent-posts {
-    text-align: center;
-    display: none;
-}
-
-.view-more-container {
-    margin-bottom: 1em;
-    text-align: center;
-    margin-bottom: 2.5em;
-}
-
-.view-more-btn {
-    /* Take out the background color of the button */
-    background-color: transparent;
-    color: var(--black-color);
-    border: 0;
-    border-bottom: 2px solid var(--black-color);
-}
-
-/* Additional posts styling - End */
-
 /* Footer styles - Start */
 
 .footer {
@@ -224,108 +99,6 @@ take up the same space vertically even if they have different content */
 }
 
 /* Footer styles - End */
-
-/* Main article detail styles - Start */
-.main-article-header-container,
-.main-article-content-container {
-    max-width: 850px;
-    margin: 2em auto;
-    display: grid;
-    gap: 1em;
-}
-
-.selected-article {
-    margin: 2em auto 3em;
-    text-align: center;
-}
-
-.selected-article .article-date {
-    margin-bottom: 1.25em;
-}
-
-.selected-article .article-title {
-    margin-bottom: 0.5em;
-}
-
-.selected-article .article-summary {
-    margin-bottom: 2em;
-}
-
-.main-article-img {
-    width: 100%;
-    max-height: 490px;
-}
-
-.article-content-header,
-.article-content-text {
-    margin-bottom: 1em;
-}
-
-/* Main article detail styles - End */
-
-/* Modules styles - Start */
-
-.course-content-list {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1em;
-    margin: 2em auto;
-}
-
-.course-content-list li {
-    margin-left: 20px;
-    padding-right: 1em;
-    list-style-type: circle;
-}
-
-.projects-container {
-    display: grid;
-    /* Don't want a bit gap between projects when only a couple so max width is 150px */
-    grid-template-columns: repeat(auto-fit, 150px);
-    justify-content: center;
-    gap: 2em;
-    margin-bottom: 2em;
-}
-
-.project {
-    margin: 1em;
-    text-align: center;
-}
-
-.project-links {
-    text-decoration: none;
-    color: var(--black-color)
-}
-
-.project-title {
-    margin-bottom: 1em;
-    font-weight: 700;
-}
-
-/* Modules styles - End */
-
-/* About me styles - Start */
-.about-me-container {
-    margin: 2em auto;
-}
-
-.about-me-avatar {
-    width: 182px;
-    height: 182px;
-    border-radius: 50%;
-    margin-bottom: 1.5em;
-}
-
-.about-me-title {
-    margin-bottom: 1em;
-}
-
-.about-me-content {
-    margin-bottom: 1em;
-}
-
-/* About me styles - End */
 
 /* Some style changes for larger screens */
 @media (min-width: 500px) {
@@ -356,7 +129,12 @@ take up the same space vertically even if they have different content */
 
     /* Only need one column up to this width, then after repeat the images */
     .article-container {
-        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr))
+        grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    }
+
+    .about-me-avatar {
+        float: left;
+        margin-right: 2em;
     }
 
 }

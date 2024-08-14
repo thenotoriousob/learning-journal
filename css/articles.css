@@ -1,0 +1,53 @@
+/* Make the container a grid to make the cards responsive, each row will
+take up the same space vertically even if they have different content */
+.article-container {
+    display: grid;
+    /* Didn't want to have a fixed width when on a smaller screen as it overflows
+      the container eventually. So set as 1fr, then bring in the minmax on larger screens */
+    grid-template-columns: 1fr;
+    gap: 1em;
+    padding: 2em 0;
+}
+/* Make the article card a flex container to easily space out the content */
+.article {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    cursor: pointer;
+    margin-bottom: 2em;
+}
+
+.article-date {
+    color: var(--black-color);
+}
+
+.article-img {
+    width: 100%;
+} 
+
+.article-title {
+    color: var(--article-header-color);
+}
+
+.article-text {
+    color: var(--article-text-color);
+}
+
+.recent-posts {
+    text-align: center;
+    display: none;
+}
+
+.view-more-container {
+    margin-bottom: 1em;
+    text-align: center;
+    margin-bottom: 2.5em;
+}
+
+.view-more-btn {
+    /* Take out the background color of the button */
+    background-color: transparent;
+    color: var(--black-color);
+    border: 0;
+    border-bottom: 2px solid var(--black-color);
+}

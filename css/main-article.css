@@ -1,0 +1,68 @@
+/* Main page main article styles - Start */
+.main-page-hero {
+    background-image: url("../images/hero.png");
+    background-size: cover;
+    cursor: pointer;
+}
+
+/* The .article-date class changes the font to black for the rest
+of the dates on the page */
+.main-page-hero,
+.main-page-hero .article-date {
+    color: var(--white-color);
+}
+/* Make it a flex container so we can position the text at the bottom */
+.main-page-hero .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 300px;
+    gap: 0.5em;
+    padding-bottom: 1.5em;
+    pointer-events: none;
+}
+/* Limit how long the summary gets on one line to make it more readable
+on larger screens */
+.main-article-summary {
+    max-width: 615px;
+}
+
+/* Main page main article styles - End */
+
+/* Main article detail styles - Start */
+.main-article-header-container,
+.main-article-content-container {
+    max-width: 850px;
+    margin: 2em auto;
+    display: grid;
+    gap: 1em;
+}
+
+.selected-article {
+    margin: 2em auto 3em;
+    text-align: center;
+}
+
+.selected-article .article-date {
+    margin-bottom: 1.25em;
+}
+
+.selected-article .article-title {
+    margin-bottom: 0.5em;
+}
+
+.selected-article .article-summary {
+    margin-bottom: 2em;
+}
+
+.main-article-img {
+    width: 100%;
+    max-height: 490px;
+}
+
+.article-content-header,
+.article-content-text {
+    margin-bottom: 1em;
+}
+
+/* Main article detail styles - End */

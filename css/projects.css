@@ -1,0 +1,37 @@
+.course-content-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 2em auto;
+}
+
+.course-content-list li {
+    margin-left: 20px;
+    padding-right: 1em;
+    list-style-type: circle;
+}
+
+.projects-container {
+    display: grid;
+    /* Don't want a bit gap between projects when only a couple so max width is 150px */
+    grid-template-columns: repeat(auto-fit, 150px);
+    justify-content: center;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+.project {
+    margin: 1em;
+    text-align: center;
+}
+
+.project-links {
+    text-decoration: none;
+    color: var(--black-color)
+}
+
+.project-title {
+    margin-bottom: 1em;
+    font-weight: 700;
+}
