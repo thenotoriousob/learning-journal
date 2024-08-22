@@ -178,9 +178,9 @@ export const blogData = [
     },
     {
         title: "User interactive design",
-        image: "./images/post-img-07.jpg",
-        alttext: "Text that says this module still has to be done",
-        published: "TBC",
+        image: "./images/post-img-03.jpg",
+        alttext: "Laptop with vs code open",
+        published: "AUGUST 2024",
         summary: "Learn the importance of good UI design",
         coursecontent: ["White space","Color","Contrast","Scale","Alignment","Typography","Visual hierarchy"]
     },

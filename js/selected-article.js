@@ -20,8 +20,14 @@ export const renderSelectedArticle = (articleId) => {
             `;
         });
 
+        html += `
+                 </ul>
+        `;
+
         /* Only do this if the module has solo projects */
         if (blogData[articleId].projects) {
+
+            html += `<div class="projects-container">`
 
             blogData[articleId].projects.forEach((blog) => {
 
@@ -37,6 +43,8 @@ export const renderSelectedArticle = (articleId) => {
                 `;
 
             });
+
+            html += `</div>`;
 
         };
 
