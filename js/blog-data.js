@@ -70,7 +70,7 @@ export const blogData = [
         published: "JULY, 2024",
         summary: "Learn how to make your websites accessible to all",
         coursecontent: ["Text contrast","Alt text for images","Accessible links","Accessible form fields",
-                        "Semantic html", "font-size: rem", "Skip navigation link"]
+                        "Semantic html", "font-size: rem", "Skip navigation link","background-blend-mode"]
     },
     {
         title: "Essential CSS concepts",
@@ -79,7 +79,7 @@ export const blogData = [
         published: "JULY, 2024",
         summary: "Take your css skills up a level from the first module",
         coursecontent: ["margin auto on flex children","position absolute and relative","flex align-self",
-                        "position fixed", "z-index"],
+                        "position fixed", "z-index","float"],
         projects: [
             {
                 name: "Oldagram",
@@ -140,27 +140,49 @@ export const blogData = [
                         "Flexbox order","Box-sizing","Style form elements, modifiers","grid-template-columns",
                         "grid-template-rows","span","grid-column","grid-row","grid lines","grid-template-areas",
                         "grid-auto-rows","auto-fit","grid-auto-flow","dense","repeat()","minmax()","fr unit","gap"],
+        projects: [
+            {
+                name: "Learning journal",
+                url: "https://statuesque-sprite-c12c06.netlify.app",
+                img: "./images/learning-journal.png"
+            }
+        ]
     },
     {
         title: "Code reviews",
-        image: "./images/post-img-07.jpg",
-        alttext: "Text that says this module still has to be done",
+        image: "./images/post-img-04.jpg",
+        alttext: "A woman walking on the beach on a sunny day",
         published: "AUGUST, 2024",
-        summary: "Learn git essentials and the importance of code reviews"
+        summary: "Learn git essentials and the importance of code reviews",
+        coursecontent: ["Git","Pull requests","Branching","Merge conflicts","Code reviews"],
     },
     {
         title: "Working with APIS",
-        image: "./images/post-img-07.jpg",
-        alttext: "Text that says this module still has to be done",
-        published: "TBC",
-        summary: "Learn the essential skill of interacting with apis"
+        image: "./images/post-img-05.jpg",
+        alttext: "A computer screen showing the home page of a React app",
+        published: "AUGUST 2024",
+        summary: "Learn the essential skill of interacting with apis",
+        coursecontent: ["HTTP Requests","URLs, endpoints","Methods","Body","Headers","REST APIs","Resources","Parameters","Queries"],
+        projects: [
+            {
+                name: "Color scheme generator",
+                url: "https://stately-cocada-48ca91.netlify.app",
+                img: "./images/color-generator.png"
+            },
+            {
+                name: "Movie watchlist",
+                url: "https://whimsical-melba-2ca391.netlify.app",
+                img: "./images/movie-watchlist.png"
+            }
+        ]
     },
     {
         title: "User interactive design",
         image: "./images/post-img-07.jpg",
         alttext: "Text that says this module still has to be done",
         published: "TBC",
-        summary: "Learn the importance of good UI design"
+        summary: "Learn the importance of good UI design",
+        coursecontent: ["White space","Color","Contrast","Scale","Alignment","Typography","Visual hierarchy"]
     },
     {
         title: "React basics",
